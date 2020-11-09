@@ -4,7 +4,7 @@ date: 2019-08-12
 tags: [First Post, Beginner]
 categories: [Test, Example]
 header:
-  image: "/images/header_square.jpg"
+  image: "/images/header_square.png"
 excerpt: "Data Wrangling, Data Science, Messy Data"
 mathjax: "true"
 ---
