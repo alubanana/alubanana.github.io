@@ -2,6 +2,7 @@
 title: "Example Project Post"
 date: 2019-08-12
 tags: [data wrangling, data science, messy data]
+categories: [Test, Example]
 header:
   image: "/images/header_square.jpg"
 excerpt: "Data Wrangling, Data Science, Messy Data"
@@ -25,3 +26,5 @@ print(hello_world())
 ```python
 hello world!
 ```
+
+$$e^{i\pi} +1 = 0$$

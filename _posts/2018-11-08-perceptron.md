@@ -2,6 +2,7 @@
 title: "Machine Learning Project: Perceptron"
 date: 2018-11-08
 tags: [machine learning, data science, neural network]
+categories: [Test, Example]
 header: 
     image: "images/header_square.png"
 excerpt: "Machine Learning, Perceptron, Data Science"
