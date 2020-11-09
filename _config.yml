@@ -94,14 +94,14 @@ analytics:
 # Site Author
 author:
   name             : "Annan Chen"
-  avatar           : "images/header.png"# path of avatar image, e.g. "/assets/images/bio-photo.jpg"
+  avatar           : "images/bio.jpeg"# path of avatar image, e.g. "/assets/images/bio-photo.jpg"
   bio              : "**Thank you** for viewing my website!"
   location         : "New York, NY"
   email            : "ac4619@columbia.edu"
   links:
     - label: "Email"
       icon: "fas fa-fw fa-envelope-square"
-      url: "ac4619@columbia.edu"
+      url: "mailto:ac4619@columbia.edu"
     - label: "Website"
       icon: "fas fa-fw fa-link"
       # url: "https://your-website.com"
@@ -148,7 +148,7 @@ footer:
       url: "https://www.linkedin.com/in/annan-chen-1227b5138/"
     - label: "Email"
       icon: "fas fa-fw fa-envelope-square"
-      url: "ac4619@columbia.edu"
+      url: "mailto:ac4619@columbia.edu"
 
 
 # Reading Files
