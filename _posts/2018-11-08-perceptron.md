@@ -1,7 +1,7 @@
 ---
-title: "Machine Learning Project: Perceptron"
+title: "Testing Post Built"
 date: 2018-11-08
-tags: [machine learning, data science, neural network]
+tags: [First Post, Beginner]
 categories: [Test, Example]
 header: 
     image: "images/header_square.png"

@@ -1,7 +1,7 @@
 ---
 title: "Example Project Post"
 date: 2019-08-12
-tags: [data wrangling, data science, messy data]
+tags: [First Post, Beginner]
 categories: [Test, Example]
 header:
   image: "/images/header_square.jpg"

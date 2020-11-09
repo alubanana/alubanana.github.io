@@ -1,6 +1,6 @@
 ---
 
-layout: categories
+layout: tags
 permalink: /project-categories/
 title: "Data Science Projects"
 author_profile: true
