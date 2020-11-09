@@ -99,9 +99,9 @@ author:
   location         : "New York, NY"
   email            : "ac4619@columbia.edu"
   links:
-    - label: "Email"
-      icon: "fas fa-fw fa-envelope-square"
-      url: "mailto:ac4619@columbia.edu"
+    # - label: "Email"
+    #   icon: "fas fa-fw fa-envelope-square"
+    #   url: "mailto:ac4619@columbia.edu"
     - label: "Website"
       icon: "fas fa-fw fa-link"
       # url: "https://your-website.com"
