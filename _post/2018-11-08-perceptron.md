@@ -1,6 +1,6 @@
 ---
 title: "Machine Learning Project: Perceptron"
-date: 2020-11-08
+date: 2018-11-08
 tags: [machine learning, data science, neural network]
 header: 
     image: "images/header_square.png"
@@ -20,7 +20,7 @@ and here's some *italics*
 
 **this is bold**
 
-Here is my [resume](https://github.com/alubanana/alubanana.github.io/tree/main/resume/resume.pdf). Check it out! 
+Here is my [resume](https://github.com/alubanana/alubanana.github.io/blob/main/resume/Resume_Annan.pdf). Check it out! 
 
 Here is a bulleted list: 
 * First item
@@ -44,6 +44,7 @@ Here is some inline code `x+y`
 
 Here's an image:
 <img src="{{ site.url }}{{ site.baseurl }}/images/bio.jpeg" alt="my photo">
+
 
 Here's another image using Markdown:
 ![alt]({{ site.url }}{{ site.baseurl }}/images/bio.jpeg)
