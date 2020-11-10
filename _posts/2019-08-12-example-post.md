@@ -1,7 +1,7 @@
 ---
 title: "Example Project Post"
 date: 2019-08-12
-tags: [First Post, Beginner]
+# tags: [First Post, Beginner]
 categories: [Test, Example]
 header:
   image: "/images/header_square.png"

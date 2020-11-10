@@ -4,9 +4,9 @@ main:
     url: /about/
   - title: "Project Collections"
     url: /category-archive/
-  - title: "Posts Timeline"
+  - title: "Project Timeline"
     url: /year-archive/
-  - title: "Tags"
-    url: /tag-archive/
+  # - title: "Tags"
+  #   url: /tag-archive/
   # - title: "Sitemap"
   #   url: /sitemap/
