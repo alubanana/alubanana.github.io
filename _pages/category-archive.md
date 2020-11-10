@@ -1,7 +1,7 @@
 ---
 
 layout: categories
-permalink: /project-categories/
+permalink: /category-archive/
 title: "Projects by Category"
 author_profile: true
 header: 
