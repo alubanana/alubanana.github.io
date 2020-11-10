@@ -1,7 +1,7 @@
 ---
 title: "Testing Post Built"
 date: 2018-11-08
-tags: [First Post, Beginner]
+# tags: [First Post, Beginner]
 categories: [Test, Example]
 header: 
     image: "images/header_square.png"
