@@ -1,16 +1,23 @@
 ---
 title: "NBA Shot Prediction"
-date: 2018-11-08
-# tags: [First Post, Beginner]
+date: 2020-11-16
 categories: [Machine Learning, Data Visualization, UBC]
+tags: [Machine Learning, Data Visualization, Python, Tableau, RFE, Feature Selection]
 header: 
     image: "images/header_square.png"
 excerpt: "Machine Learning, Data Visualization, Data Science"
 mathjax: true
+toc_label: "Outline"
+toc_sticky: true
+
 ---
 
 
+
+
 # NBA Shot Prediction - Maximizing Chances of Victory in Basketball
+
+[Link to Github](https://github.com/alubanana/NBA_Shot_Prediction)
 
 ## Project Overview
 
