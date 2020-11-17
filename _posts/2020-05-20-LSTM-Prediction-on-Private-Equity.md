@@ -2,7 +2,7 @@
 title: "Predictions on Private Equity Fund’s Contribution Using Encoder-Decoder LSTM Model with Multivariate Input"
 date: 2020-05-20
 categories: [Machine Learning, Columbia, Deep Learning, Sequential Models]
-tags: [Machine Learning, Deep Learning, Tensorflow, Keras, Neural Network, LSTM, Finance, Prediction, PCA, Data Visualization]
+tags: [Machine Learning, Deep Learning, Tensorflow, Keras, Neural Network, LSTM, Finance, Time Series, Prediction, PCA, Data Visualization]
 header: 
     image: "images/header_square.png"
 excerpt: "Machine Learning, Deep Learning, Private Equity"
