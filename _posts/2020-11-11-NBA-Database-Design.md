@@ -26,16 +26,15 @@ toc_sticky: true
 - [Link to Github](https://github.com/alubanana/NBA_Database_Project)
 
 Member: 
-<li>ac4619 Annan Chen
-<li>jl5521 Jiepeng Lian
+- ac4619 Annan Chen
+- jl5521 Jiepeng Lian
 
 This is a project of relational database that gives us a scope of how NBA league and its members behave and how do they connect to each other. With this database, you can find out each team and player’s actions and basic stats during the season(stadium, players, coaches, etc), each player’s shot informatrion during one specific game(time clock, shot distance, etc.)
 
 Inside the Virtual Machine command line, type the following commands with account name and password to activate the database. 
-```console
-source ../jl5521/.virtualenvs/dbproj/bin/activate
-PGPASSWORD=6447 psql -U jl5521 -h 35.231.103.173 -d proj1part2
-```
+
+`source ../jl5521/.virtualenvs/dbproj/bin/activate`
+`PGPASSWORD=6447 psql -U jl5521 -h 35.231.103.173 -d proj1part2`
 
 PostgreSQL account name: jl5521
 PGPASSWORD=6447 psql -U jl5521 -h 35.231.103.173 -d proj1part2
@@ -48,7 +47,7 @@ Note: Page might not work as VM is not activated on the Google Cloud.
 
 In our part 1 description, we plan to build the NBA stats database with following functions: “ We would like to provide our users with a web-based platform where they can search their interested players and see his seasonal stats, and how he perform in each game during the entire season (visualization could be done here). Also, if someone wants to know more about his/her favorite team, he/she can click the team and see team’s game schedule, past records, news, team info etc. And we can use different visualization factor to demonstrate those results”. 
 
-<img src="{{ site.url }}{{ site.baseurl }}/images/database/er.png" alt="ER Diagram" width = "400">
+<img src="{{ site.url }}{{ site.baseurl }}/images/database/er.png" alt="ER Diagram" width = "600">
 
 
 ### Database Overview
@@ -65,6 +64,7 @@ The two main pages we build is “Search for players” and “Search for teams�
 Search for Player will provide all players that match your searched string. For example, if you type in “Stephen”, the database will return “Stephen Curry” and “Lance Stephenson”. By clicking the name of each player, you can view the seasonal statistic for this player, including team name, position, height, weight, total blocks, rebound, assist, career start year, salary, and seasonal average data such as 2-point and 3-point shot percentage, etc. Also, if you want to have more information about this player, you can click “News” to view all the news related to this player. Finally, you can click “Schedule” to view all the matches that this player had during this period(for our database, it only records the matches during 2016 March 1st to March 4th). This schedule bottom provides information for this player in each game, including the number of total attempted shots, made shot, missed shot and some other information about the shots like average time clock, average shot distance, etc. One of the interesting things we found out is that, for Stephen Curry his average shot distance is higher than most of other players, for example, Lance Stephenson, which is very intuitive as we know Curry is such a player who likes making the shot from downtown. 
 
 + Example Query: Find players whose salary is 4 times higher than league average
+
 ```sql
 SELECT p1.player_name, p1.team_name, p1.salary from players p1, players p2 group by p1.player_name, p1.team_name, p1.salary having p1.salary > avg(p2.salary) * 4 order by p1.salary DESC;
 ```
