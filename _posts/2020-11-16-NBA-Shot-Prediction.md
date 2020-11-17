@@ -1,13 +1,14 @@
 ---
 title: "NBA Shot Prediction"
 date: 2020-11-16
-categories: [Machine Learning, Data Visualization, UBC]
-tags: [Machine Learning, Data Visualization, Python, Tableau, RFE, Feature Selection]
+categories: [Machine Learning, UBC, Business Analytics]
+tags: [Machine Learning, Data Visualization, Python, Tableau, RFE, Feature Selection, NBA]
 header: 
     image: "images/header_square.png"
-excerpt: "Machine Learning, Data Visualization, Data Science"
+# excerpt: "Machine Learning, Data Visualization, Data Science"
 mathjax: true
 toc_label: "Outline"
+toc: true
 toc_sticky: true
 
 ---
@@ -98,9 +99,9 @@ The feature selection model developed by William is based on five selection stan
 
 We already performed the data cleaning process by replacing the missing value with league’s average data. Also, as each shot’s attribute is quite different, we do not have variables that only have single unique value. These two features is shown in Figure 5. Thus we have 0 variable being excluded by the first and second standard.
 
-<img src="{{ site.url }}{{ site.baseurl }}/images/NBA/feature1.png" alt="my photo" width = '300'>
+<img src="{{ site.url }}{{ site.baseurl }}/images/NBA/feature1.png" alt="my photo" width = '250'> <img src="{{ site.url }}{{ site.baseurl }}/images/NBA/feature2.png" alt="my photo" width = '250'>
 
-<img src="{{ site.url }}{{ site.baseurl }}/images/NBA/feature2png" alt="my photo" width = '300'>
+
 
 
 
