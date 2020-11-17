@@ -1,5 +1,5 @@
 ---
-title: "NBA Shot Prediction"
+title: "NBA Shot Prediction - Maximizing Chances of Victory in Basketball"
 date: 2020-11-16
 categories: [Machine Learning, UBC, Business Analytics]
 tags: [Machine Learning, Data Visualization, Python, Tableau, RFE, Feature Selection, NBA]
@@ -12,9 +12,6 @@ toc: true
 toc_sticky: true
 
 ---
-
-
-# NBA Shot Prediction - Maximizing Chances of Victory in Basketball
 
 [Link to Github](https://github.com/alubanana/NBA_Shot_Prediction)
 
