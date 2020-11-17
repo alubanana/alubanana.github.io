@@ -5,7 +5,7 @@ categories: [Machine Learning, UBC, Business Analytics]
 tags: [Machine Learning, Data Visualization, Python, Tableau, RFE, Feature Selection, NBA]
 header: 
     image: "images/header_square.png"
-# excerpt: "Machine Learning, Data Visualization, Data Science"
+excerpt: "Machine Learning, Data Visualization, Business Analytics"
 mathjax: true
 toc_label: "Outline"
 toc: true
