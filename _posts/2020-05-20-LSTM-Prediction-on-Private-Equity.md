@@ -5,7 +5,7 @@ categories: [Machine Learning, Columbia, Deep Learning, Sequential Models]
 tags: [Machine Learning, Deep Learning, Tensorflow, Keras, Neural Network, LSTM, Finance, Time Series, Prediction, PCA, Data Visualization]
 header: 
     image: "images/header_square.png"
-excerpt: "Machine Learning, Deep Learning, Private Equity"
+excerpt: "The First Attempt to Combine Private Equity and Deep Learning in the industry"
 mathjax: true
 toc_label: "Outline"
 toc: true

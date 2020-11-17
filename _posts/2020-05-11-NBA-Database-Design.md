@@ -5,7 +5,7 @@ categories: [Database, Columbia]
 tags: [SQL, PostgreSQL, Flask, Database, GCP, Web Application]
 header: 
     image: "images/header_square.png"
-excerpt: "Database, Web Application, SQL"
+excerpt: "A Database for All NBA Fans"
 mathjax: false
 toc_label: "Outline"
 toc: true

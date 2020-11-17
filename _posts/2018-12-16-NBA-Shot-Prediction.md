@@ -2,10 +2,10 @@
 title: "NBA Shot Prediction - Maximizing Chances of Victory in Basketball"
 date: 2018-12-16
 categories: [Machine Learning, UBC, Business Analytics]
-tags: [Machine Learning, Data Visualization, Python, Tableau, RFE, Feature Selection, NBA, Prediction]
+tags: [Machine Learning, Data Visualization, Python, Tableau, RFE, Feature Selection, NBA, Prediction, Business Analytics]
 header: 
     image: "images/header_square.png"
-excerpt: "Machine Learning, Data Visualization, Business Analytics"
+excerpt: "Machine Learning Prediction of Shot Results"
 mathjax: true
 toc_label: "Outline"
 toc: true
@@ -13,7 +13,9 @@ toc_sticky: true
 
 ---
 
-[Link to Github](https://github.com/alubanana/NBA_Shot_Prediction)
+- [Link to Github](https://github.com/alubanana/NBA_Shot_Prediction)
+- [Full Report](https://github.com/alubanana/Predictions_on_Private_Equity_Funds_Contribution_with_LSTM/blob/master/PE%20LSTM%20final%20project%20Report_05_2020.pdf)
+
 
 ## Project Overview
 
