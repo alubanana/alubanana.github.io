@@ -6,7 +6,7 @@ tags: [SQL, PostgreSQL, Flask, Database, GCP, Web Application]
 header: 
     image: "images/header_square.png"
 excerpt: "Database, Web Application, SQL"
-mathjax: true
+mathjax: false
 toc_label: "Outline"
 toc: true
 toc_sticky: true
@@ -63,7 +63,7 @@ Search for Player will provide all players that match your searched string. For 
 + Example Query: Find players whose salary is 4 times higher than league average
 
 ```sql
-SELECT p1.player_name, p1.team_name, p1.salary from players p1, players p2 group by p1.player_name, p1.team_name, p1.salary having p1.salary > avg(p2.salary) * 4 order by p1.salary DESC;
+SELECT p1.player_name, p1.team_name, p1.salary FROM players p1, players p2 GROUP BY p1.player_name, p1.team_name, p1.salary HAVING p1.salary > AVG(p2.salary) * 4 ORDER BY p1.salary DESC;
 ```
 
 <img src="{{ site.url }}{{ site.baseurl }}/images/database/db1.png" alt="my photo">
@@ -75,7 +75,7 @@ Search for teams will gives back specific team information about the team you wa
 + Example Query:Rank the total salary for all teams and select 5 highest ones
 
 ```sql
-SELECT sum(salary) as total_salary, team_name from players group by team_name order by sum(salary) DESC limit 5;
+SELECT SUM(salary) AS total_salary, team_name FROM players GROUP BY team_name ORDER BY sum(salary) DESC LIMIT 5;
 ```
 
 <img src="{{ site.url }}{{ site.baseurl }}/images/database/db2.png" alt="my photo">
