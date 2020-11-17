@@ -14,8 +14,6 @@ toc_sticky: true
 ---
 
 
-
-
 # NBA Shot Prediction - Maximizing Chances of Victory in Basketball
 
 [Link to Github](https://github.com/alubanana/NBA_Shot_Prediction)
@@ -25,18 +23,13 @@ toc_sticky: true
 Our objective is to build a shot prediction model, whether the player will score or not score, based on the data analysis that we conduct after taking the shots and the circumstances under which they are made into consideration, to help all stakeholders develop more effective game strategies. 
 In building our models, our data mining goal is to find the best model that has the highest accuracy and F1-score.
 
-
-## Impact on Stakeholders and Potential Benefits
-
 <img src="{{ site.url }}{{ site.baseurl }}/images/NBA/table1.png" alt="my photo">
 
 ## Data Understanding & Preparation
 
 We will first explain our original dataset before explaining how it is prepared. Afterwards, we will explore our new, blended dataset using exploratory data visualization (EDA) methods.
 
-### The Original Kaggle Dataset
-
-The dataset is a public Kaggle dataset that records all the shots attempted during the NBA 2014-2015 season. It is uploaded by a Kaggle data scientist named “DanB”, and he derived the raw data from NBA’s REST API. The target variable is the “Shot Result”, whether the player made the shot (“made”) or missed the shot (“missed”). The predictor variables include “Game_ID”, “Matchup”, “Location”, “W”, “Final_Margin”, “Shot Number”, “Period”, “Game_Clock”, “Shot_Clock”, “Dribbles”, “Touch_Time”, “Shot_Dist”, “PTS_Type”, “Closest_Defender”, “Closest_Defender_Player_ID”, “FGM”, “PTS”, “player_name”, and “player_ID”. There is a total of 128,069 data point (or shots attempted), each with 20 variables explaining the shot’s feature. The completeness of the dataset is quite high, but the depth of information on players is quite shallow. We thus decided to find another dataset on players’ personal information.
+The dataset is a public Kaggle dataset that records all the shots attempted during the NBA 2014-2015 season. It is uploaded by a Kaggle data scientist named “DanB”, and he derived the raw data from NBA’s REST API. The target variable is the “Shot Result”, whether the player made the shot (“made”) or missed the shot (“missed”). There is a total of 128,069 data point (or shots attempted), each with 20 variables explaining the shot’s feature. The completeness of the dataset is quite high, but the depth of information on players is quite shallow. We thus decided to find another dataset on players’ personal information.
 
 [Link to the original dataset](https://www.kaggle.com/dansbecker/nba-shot-logs)
 
@@ -48,23 +41,23 @@ We followed the 5 essential data preparation steps to create our ideal dataset. 
 
 This session will illustrate relationship between pairs or small numbers of attributes using different visualization techniques.
 
-#### The Box Plot
+- The Box Plot
 
 The Box Plot illustrates the relationship between the height of players and their positions in teams. Intuitively, players with center positions, who are normally the last line of defense in an offensive attempt, needs to be the tallest. Similarly, players who are point guards usually are ball-handler and requires a relatively smaller physique to agilely move around in the field.
 
 <img src="{{ site.url }}{{ site.baseurl }}/images/NBA/plot1.png" alt="my photo">
 
-#### Distribution Plot
+- Distribution Plot
 
 Figure 2 is a distribution plot of the shot-distance, from which a pattern can be clearly observed. Most of the shots made were concentrated to areas close to the basket or close to the three-point line (7.24 m). This makes intuitive sense because players either want to maximize probability of making the shot by being close to the basket or trying to maximize their points by trying outside the three-point line.
 
 <img src="{{ site.url }}{{ site.baseurl }}/images/NBA/plot2.png" alt="my photo">
 
-#### The Violin Plot
+- The Violin Plot
 
 Above is the violin plot that illustrates the relationship between shot distance and shot results of different positions.
 
-#### Tableau Visualization
+- Tableau Visualization
 
 In Tableau, both the sum of field goal made and its average were plotted against the shot distance. It can be observed that number of successful shots were concentrated at the two areas discussed above. Some interesting outliers can also be observed. For example, only one shot made at a distance of 14.39 meters was successful, which was made by John Wall. Generally, the shots with the biggest success rate is when you are closest to the basket.
 
@@ -74,7 +67,7 @@ In Tableau, both the sum of field goal made and its average were plotted against
 
 In our analysis, **logistics regression, decision tree** and **random forest** model were employed because the target variable in this case is categorical, and we would like to predict whether the shot will be successful or not. Two different variable selection criteria were employed and their results will be compared. The first selection method is based on intuition, collinearity and p-value. The second one is based on feature selection method developed by William Koehrsen.
 
-### First-level variable selection-Intuition, correlation and P-value
+### First-level variable selection
 
 Among 45 explanatory variables in total, one who watches NBA games for a while could discover some irrelevant features when player makes a shot. For example, when considering the ability of the offender, the blocking and rebound rate of the offender seems to be of little importance on the shot results. On the other hand, the three-point shooting percentage might be insignificant to determine whether the defender could successfully hinder the shot. Therefore, we firstly deleted 23 variables that are perceived to be trivial and kept 22 independent variables in the models. Among them: 9 variables were about the offender (shooting percentage, height, etc), 9 variables were about the defender (the distance between Off and Def, rebound rate, etc), and 4 variables were about other attributes of a shot (shot clock, shot distance, etc). The details of variables are shown in the tables below.
 
@@ -102,9 +95,6 @@ We already performed the data cleaning process by replacing the missing value wi
 <img src="{{ site.url }}{{ site.baseurl }}/images/NBA/feature1.png" alt="my photo" width = '250'> <img src="{{ site.url }}{{ site.baseurl }}/images/NBA/feature2.png" alt="my photo" width = '250'>
 
 
-
-
-
 As two highly correlated variables would overshadow the effect of the other one, therefore we only need to keep one of them and deleting the others. Similar to the heat map used in the previous selection method, but William’s model provides the threshold of correlation and could exclude the variables whose correlation is above the set threshold. Here we set the correlation upper limit to be 0.6, which means we delete the features whose correlation is higher than 0.6. Figure 6 demonstrates the correlation of all variables included and those whose correlation is higher than 0.6. In this step, we delete all 24 variables (Table 3) that have the correlation above the threshold. Figure 7 is an example of the correlation value and which variable to keep or remove.
 
 ![](/images/table4.png)
@@ -124,7 +114,7 @@ The fourth and fifth selection criteria are built on a supervised machine learni
 
 These low importance variables might have overlaps with high correlation variables, therefore the Feature Selection model totally removes 26 variables which are 'HOME', ‘FG_off’, ‘Height_off', 'DRB_def', ‘FG_off', 'eFG_off', 'TOUCH_TIME', '2P_off', 'Weight_def', 'OBPM_off', 'WS_def', 'TOV_off', '2P_off', 'BLK_def', '2PA_off', 'FGA_off', 'WS_off', '3PA_off', ‘TRB_def', 'DBPM_def', 'ORB_def', 'PERIOD', 'OWS_off', ‘Weight_off', and ‘3P_off'. With the remaining features, we apply logistic regression, decision tree, and random forest to further analyze whether our intuitive variable selection and modeling variable selection produce distinguished results.
 
-### Further Variable Selection Method
+### Further Variable Selection
 
 Except for variable selections based on their importance level, collinearity, and p-value as shown in previous sections. We could also use recursive feature elimination to examine whether our model include the variables that might still could be removed for improvement. Our RFE model shows that all variables’ label is “TRUE”, which means it is unnecessary to remove any of them.
 
@@ -141,7 +131,7 @@ Stepwise regression is another way to find the most suitable features to include
 
 ## RESULTS & EVALUATIONS
 
-### Result from First variable selection - Intuition, correlation and P-value
+### Result from First variable selection
 
 Our business objective is to predict as accurately as possible whether a shot will be made or not, so the accuracy of the models is important and should be ranked and compared. To compare the results and accuracy of each models, we calculated the accuracy score and F1 score of logistics regression, decision tree, and random forest models. We compared the different precision, F1 score between the three models. We found that the accuracy for logistics regression was bigger than decision tree, but it was similar to the random forest model. Logistics regression also has the largest F-1 score. Therefore, logistics regression is the most accurate model to employ in this case.
 
@@ -149,7 +139,7 @@ Our business objective is to predict as accurately as possible whether a shot wi
 
 In decision tree analysis, the variable with the highest importance level is Shot Distance (0.14), the next one is Shot Clock (0.11), followed by Closest Defender Distance (0.1). It is shown that deciding variables are not the player’s own attributes. The reason may be that we used the whole NBA data to base our model on, which likely will measure an average player’s capabilities. Therefore, in the average area, player’s skills do not matter that much. What is important is the circumstances under which the offense was taken. This insight is important for coaches, and basketball players in finding the best strategy in a game and fully utilizing each person’s potential.
 
-### Results from Feature Selection Model
+### Feature Selection Result
 
 We later perform logistic regression, decision tree and random forest model to the variables selected based on 5 standards from Feature Selection Model, and the results are shown as follows.
 
