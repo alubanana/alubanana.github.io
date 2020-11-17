@@ -5,7 +5,7 @@ categories: [Web Application, SQL, Django, Columbia, Database]
 tags: [Web Application, SQL, Django, HTML, GCP, Bash, Linux, Git]
 header: 
     image: "images/header_square.png"
-excerpt: "Tracking Squirrel in the Central Park"
+excerpt: "Tracking Squirrels in the Central Park"
 mathjax: true
 toc_label: "Outline"
 toc: true
