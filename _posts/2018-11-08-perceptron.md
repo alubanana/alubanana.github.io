@@ -1,4 +1,4 @@
----
+<!-- ---
 title: "Testing Post Built"
 date: 2018-11-08
 # tags: [First Post, Beginner]
@@ -7,7 +7,7 @@ header:
     image: "images/header_square.png"
 excerpt: "Machine Learning, Perceptron, Data Science"
 mathjax: true
----
+--- -->
 
 # H1 Heading
 
