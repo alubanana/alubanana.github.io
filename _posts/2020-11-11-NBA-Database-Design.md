@@ -33,19 +33,16 @@ This is a project of relational database that gives us a scope of how NBA league
 
 Inside the Virtual Machine command line, type the following commands with account name and password to activate the database. 
 
-`source ../jl5521/.virtualenvs/dbproj/bin/activate`
-`PGPASSWORD=6447 psql -U jl5521 -h 35.231.103.173 -d proj1part2`
-
-PostgreSQL account name: jl5521
-PGPASSWORD=6447 psql -U jl5521 -h 35.231.103.173 -d proj1part2
+1. `source ../jl5521/.virtualenvs/dbproj/bin/activate`
+2. `PGPASSWORD=6447 psql -U jl5521 -h 35.231.103.173 -d proj1part2`
 
 
 [Web application URL](http://35.227.53.125:8111/)
-Note: Page might not work as VM is not activated on the Google Cloud. 
+- *Note: Page might not work as VM is not activated on the Google Cloud.*
 
-### Part 1
+### ER Diagram
 
-In our part 1 description, we plan to build the NBA stats database with following functions: “ We would like to provide our users with a web-based platform where they can search their interested players and see his seasonal stats, and how he perform in each game during the entire season (visualization could be done here). Also, if someone wants to know more about his/her favorite team, he/she can click the team and see team’s game schedule, past records, news, team info etc. And we can use different visualization factor to demonstrate those results”. 
+In our part 1 description, we plan to build the NBA stats database with following functions: We would like to provide our users with a web-based platform where they can search their interested players and see his seasonal stats, and how he perform in each game during the entire season (visualization could be done here). Also, if someone wants to know more about his/her favorite team, he/she can click the team and see team’s game schedule, past records, news, team info etc. And we can use different visualization factor to demonstrate those results. 
 
 <img src="{{ site.url }}{{ site.baseurl }}/images/database/er.png" alt="ER Diagram" width = "600">
 
