@@ -5,7 +5,7 @@ categories: [Machine Learning, UBC, Business Analytics]
 tags: [Machine Learning, Data Visualization, Python, Tableau, RFE, Feature Selection, NBA, Prediction, Business Analytics]
 header: 
     image: "images/header_square.png"
-excerpt: "Machine Learning Prediction of Shot Results"
+excerpt: "Machine Learning Prediction on Shot Results"
 mathjax: true
 toc_label: "Outline"
 toc: true
