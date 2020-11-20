@@ -1,6 +1,6 @@
 ---
 title: "Develop Web Application with Django"
-date: 2020-05-20
+date: 2019-12-01
 categories: [Web Application, SQL, Django, Columbia, Database]
 tags: [Web Application, SQL, Django, HTML, GCP, Bash, Linux, Git]
 header: 
