@@ -1,8 +1,8 @@
 ---
 title: "NBA Database Design"
 date: 2020-05-11
-categories: [Database, Columbia,Web Application]
-tags: [SQL, PostgreSQL, Flask, Database, GCP, Web Application]
+categories: [Database, Columbia, Web Application]
+tags: [SQL, PostgreSQL, Flask, Database, GCP, Web Application, ER Diagram]
 header: 
     image: "images/header_square.png"
 excerpt: "Building a Database for All NBA Fans"

@@ -1,7 +1,7 @@
 ---
 title: "Elephant vs Donkey — 2020 Presidential Election Prediction"
 date: 2019-12-04
-categories: [Machine Learning, Columbia, Business Analytics, Data Analytics, NLP]
+categories: [Machine Learning, Columbia, Data Analytics, NLP]
 tags: [Machine Learning, Data Visualization, Python, Regression, NLP, Text Mining, Sentiment Analysis, Data Scraping, Prediction, Analytics, Feature Engineering]
 header: 
     image: "images/header_square.png"

@@ -1,7 +1,7 @@
 ---
 title: "NBA Shot Prediction - Maximizing Chances of Victory in Basketball"
 date: 2018-12-16
-categories: [Machine Learning, UBC, Business Analytics, Data Analytics]
+categories: [Machine Learning, UBC,  Data Analytics]
 tags: [Machine Learning, Data Visualization, Python, Tableau, RFE, Feature Engineering, NBA, Prediction, Business Analytics, Data Analytics]
 header: 
     image: "images/header_square.png"
