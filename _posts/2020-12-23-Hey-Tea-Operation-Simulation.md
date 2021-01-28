@@ -1,5 +1,5 @@
 ---
-title: "Which Order First, Offline or Online? ----HEYTEA Operating Strategy"
+title: "Which Order First, Offline or Online? --- HEYTEA Operating Strategy"
 date: 2020-12-23
 categories: [Simulation, Columbia, Python, Simpy]
 tags: [Strategy, Operation, Python, Simpy]
