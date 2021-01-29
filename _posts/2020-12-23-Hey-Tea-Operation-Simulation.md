@@ -21,7 +21,7 @@ toc_sticky: true
 
 - [Model Draft](https://github.com/alubanana/Hey_Tea_Operation_Simulation/blob/master/heytea%20model%20draft.pdf)
 
-
+<img src="{{ site.url }}{{ site.baseurl }}/images/tea/tea0.jpg" alt="my photo">
 
 # Background, Value and Question
 
