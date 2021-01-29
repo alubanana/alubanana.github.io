@@ -1,7 +1,7 @@
 ---
 title: "To the Top of League of Legend --- LOL Match Prediction and Champion Clustering"
 date: 2020-12-06
-categories: [Machine Learning, Columbia, Python, R, Regression, Deep Learning]
+categories: [Data Science, Machine Learning, Columbia, Python, R, Regression, Deep Learning]
 tags: [Machine Learning, Python, R, Logistic Regression, Decision Tree, SVM, KNN, Neural Network]
 header: 
     image: "images/header_square.png"
@@ -21,7 +21,7 @@ toc_sticky: true
 
 - [Project Proposal](https://github.com/alubanana/League_of_League_Ban_Pick_Analysis/blob/master/BA_proposal.pdf)
 
-
+<img src="{{ site.url }}{{ site.baseurl }}/images/lol/lol11.jpg" alt="my photo">
 
 # Introduction
 
