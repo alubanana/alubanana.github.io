@@ -55,13 +55,6 @@ It has a positive impact both in the short and long term. In the short term, the
 In this project, we, representing the consulting group of HEYTEA to help find the proper plan, will simulate the real scenarios of a HEYTEA store in Beijing, considering every single working procedure in detail. We will set different objectives for HEYTEA, including maximizing total revenue, minimizing the average customer waiting time and maximizing the combination of the two objects, total revenue with the time penalty. In addition, we use three other objects, total order, total lost orders, total lost revenue to cross check our validation of the parameter of our strategy. We will find the best solution to prioritize orders based on different objectives or multi-objectives. The real scenario simulation works as follows.
 
 
-
-## Data Exploration and Databases
-
-We mainly explored the following two databases: Preqin and Capital IQ.
-
-Preqin is a database focusing on PE and VC funds. Under the Performance tag, we can see fund specific historical performance data. Users have access to download two kinds of performance data: historical funds info data and funds specific historical performance data.
-
 # Models 
 
 We simulate typical rush hours for HEYTEA from 11:00AM to 16:00PM. Any customers arriving before 15:00PM will be served and no customers arriving after 15:00PM will be served. There are two types of customers: offline customers who arrive the HEYTEA store and online customers who order online and wait for the delivery service of drinks. Based on actual operating data, the online arrival rate is λ_online=240 per hour and offline arrival rate is λ_offline=120 per hour. Usually, the online arrival rate is higher than the offline arrival rate, but the price from online channel is lower than that of offline. We further assume that there are 5 kinds of drinks provided by offline channel:
