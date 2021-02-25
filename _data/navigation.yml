@@ -1,0 +1,12 @@
+# main links
+main:
+  - title: "About"
+    url: /about/
+  - title: "Project Collections"
+    url: /category-archive/
+  - title: "Project Timeline"
+    url: /year-archive/
+  # - title: "Tags"
+  #   url: /tag-archive/
+  # - title: "Sitemap"
+  #   url: /sitemap/

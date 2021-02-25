@@ -5,7 +5,7 @@ categories: [Data Science, Machine Learning, Columbia, Python, R, Regression, De
 tags: [Machine Learning, Python, R, Logistic Regression, Decision Tree, SVM, KNN, Neural Network]
 header: 
     image: "images/header_square.png"
-excerpt: "Let's be the champion"
+excerpt: "Let's be the CHAMPION"
 mathjax: true
 toc_label: "Outline"
 toc: true
