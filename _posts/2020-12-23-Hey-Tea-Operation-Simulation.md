@@ -5,7 +5,7 @@ categories: [Simulation, Columbia, Python, Simpy]
 tags: [Strategy, Operation, Python, Simpy]
 header: 
     image: "images/header_square.png"
-excerpt: "Improve operation for one of the most famous milk tea brands in China"
+excerpt: "Boosting operation efficiency for one of the most famous milk tea brands in China"
 mathjax: true
 toc_label: "Outline"
 toc: true
