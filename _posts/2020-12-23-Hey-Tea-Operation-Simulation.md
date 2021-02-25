@@ -108,9 +108,9 @@ The result in panel A shows our second goal, minimizing the average waiting time
 
 ## 3. Total revenue with waiting time penalty
 
-This goal is the mixed to reach the balance between maximizing revenue and the minimizing the average time at the same time. The result in Panel A shows the objectives reaches the highest when *θ* is 0.1. However, *θ* has no significant differences in the range of 0.01 to 0.8. What’s more, the best result of 24622 is significantly better than the benchmark result of 22305, increased by 10.4%. Also, our result is robust because both the CI width and standard deviation is significantly small compared with the mean of the objective.
-
 <img src="{{ site.url }}{{ site.baseurl }}/images/tea/tea7.png" alt="my photo">
+
+This goal is the mixed to reach the balance between maximizing revenue and the minimizing the average time at the same time. The result in Panel A shows the objectives reaches the highest when *θ* is 0.1. However, *θ* has no significant differences in the range of 0.01 to 0.8. What’s more, the best result of 24622 is significantly better than the benchmark result of 22305, increased by 10.4%. Also, our result is robust because both the CI width and standard deviation is significantly small compared with the mean of the objective.
 
 ## 4. Total orders
 
