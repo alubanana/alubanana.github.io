@@ -14,7 +14,6 @@ toc_sticky: true
 ---
 
 - [Link to Github](https://github.com/alubanana/NBA_Shot_Prediction)
-- [Full Report](https://github.com/alubanana/Predictions_on_Private_Equity_Funds_Contribution_with_LSTM/blob/master/PE%20LSTM%20final%20project%20Report_05_2020.pdf)
 
 
 ## Project Overview
@@ -96,7 +95,7 @@ We already performed the data cleaning process by replacing the missing value wi
 
 As two highly correlated variables would overshadow the effect of the other one, therefore we only need to keep one of them and deleting the others. Similar to the heat map used in the previous selection method, but William’s model provides the threshold of correlation and could exclude the variables whose correlation is above the set threshold. Here we set the correlation upper limit to be 0.6, which means we delete the features whose correlation is higher than 0.6. Figure 6 demonstrates the correlation of all variables included and those whose correlation is higher than 0.6. In this step, we delete all 24 variables (Table 3) that have the correlation above the threshold. Figure 7 is an example of the correlation value and which variable to keep or remove.
 
-![](/images/table4.png)
+![Feature selection table](/images/NBA/table4.png)
 
 <img src="{{ site.url }}{{ site.baseurl }}/images/NBA/cor1.png" alt="my photo" width = '400'>
 

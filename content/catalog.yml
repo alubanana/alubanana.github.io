@@ -1,0 +1,65 @@
+name: 陈安楠
+english_name: Annan Chen
+site_url: https://alubanana.github.io
+intro: 我做数据分析，也和 AI 一起写工具。这里放项目、开发记录，以及一些想留下来的思考。
+github: https://github.com/alubanana
+linkedin: https://www.linkedin.com/in/annan-chen-1227b5138/
+projects:
+  - id: tech-research
+    title: 科技研究与可视化分析
+    official_title: AI辅助科技研究与可视化分析
+    category: 研究工具
+    year: '2026'
+    summary: 跟踪技术进展，整理相关论文和公司，也保留以前的判断。
+    image: /site-assets/tech-research.png
+    image_alt: 科技研究网站的方向与公司比较页面
+    path: /projects/tech-research/
+    source: content/projects/tech-research.md
+    stack: Python / JavaScript
+    demo: https://alubanana.github.io/tech-research-dashboard/
+    repo: https://github.com/alubanana/tech-research-dashboard
+  - id: ai-memory
+    title: AI 对话记忆与知识管理
+    official_title: 个人AI助手记忆与知识管理
+    category: AI 工具
+    year: '2026'
+    summary: 记录聊过的内容、当前进度和资料变化，方便下次接着聊。
+    image: /site-assets/ai-memory.png
+    image_alt: AI记忆工具的来源版本和阅读记录演示
+    path: /projects/ai-memory/
+    source: content/projects/ai-memory.md
+    stack: Python / SQLite
+    demo: https://alubanana.github.io/ai-context-memory/
+    repo: https://github.com/alubanana/ai-context-memory
+legacy:
+  LOL-Analysis:
+    title: 英雄联盟：比赛预测与英雄聚类
+    summary: 两类预测任务、PCA 与英雄分组，以及现在回看时需要讲清楚的问题。
+    image: /images/lol/lol11.jpg
+    category: 游戏分析
+    refresh_path: /projects/league-of-legends/
+  Hey-Tea-Operation-Simulation:
+    title: 喜茶：线上与线下订单的服务顺序
+    summary: 用离散事件模拟比较排队与订单处理策略。
+    image: /images/tea/tea0.jpg
+    category: 运营模拟
+  LSTM-Prediction-on-Private-Equity:
+    title: 私募基金现金流预测
+    summary: 比较序列特征与 Encoder–Decoder LSTM 的预测方案。
+    category: 时间序列
+  NBA-Database-Design:
+    title: NBA 数据库与查询应用
+    summary: 数据库设计、SQL 查询和 Web 应用的课程实践。
+    category: 数据应用
+  Election-Prediction:
+    title: 美国选举预测
+    summary: 人口特征、文本信息与预测模型的课程探索。
+    category: 预测建模
+  Tools-Squirrel:
+    title: 中央公园松鼠观察记录
+    summary: 用 Django 管理观察记录，并在地图上展示位置。
+    category: Web 应用
+  NBA-Shot-Prediction:
+    title: NBA 投篮预测
+    summary: 探索投篮特征、分类模型和特征选择。
+    category: 体育分析
