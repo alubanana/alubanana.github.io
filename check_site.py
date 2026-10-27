@@ -50,7 +50,7 @@ def main():
     about = (OUT/'about/index.html').read_text(encoding='utf-8')
     assert 'New York, NY' not in about and 'technically sophisticated' not in about
     lol = (OUT/'projects/league-of-legends/index.html').read_text(encoding='utf-8')
-    assert all(s in lol for s in ['98.81%', '99.13%', '56.17%', '94.05%', '6,369', '本次没有重新训练模型'])
+    assert all(s in lol for s in ['98.81%', '99.13%', '56.17%', '94.05%', '6369', '本次没有重新训练模型'])
     assert (OUT/'.nojekyll').exists()
     if issues: raise SystemExit('\n'.join(issues))
     print(json.dumps({'status':'passed','html_documents':len(docs),'legacy_routes':7,'project_details':3,'notes':2,'checked':'local links, images, anchors, XML, metadata, source boundaries and legacy route coverage'},ensure_ascii=False))

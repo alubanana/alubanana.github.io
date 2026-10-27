@@ -1,7 +1,7 @@
 name: 陈安楠
 english_name: Annan Chen
 site_url: https://alubanana.github.io
-intro: 我做数据分析，也和 AI 一起写工具。这里放项目、开发记录，以及一些想留下来的思考。
+intro: 我在网易互娱做游戏数据分析，业余开发AI应用。这里收录个人项目、开发笔记和早期的数据分析作品。
 github: https://github.com/alubanana
 linkedin: https://www.linkedin.com/in/annan-chen-1227b5138/
 projects:
@@ -10,7 +10,7 @@ projects:
     official_title: AI辅助科技研究与可视化分析
     category: 研究工具
     year: '2026'
-    summary: 跟踪技术进展，整理相关论文和公司，也保留以前的判断。
+    summary: 整理技术进展、论文和公司资料，按版本保存研究判断。
     image: /site-assets/tech-research.png
     image_alt: 科技研究网站的方向与公司比较页面
     path: /projects/tech-research/
@@ -19,11 +19,11 @@ projects:
     demo: https://alubanana.github.io/tech-research-dashboard/
     repo: https://github.com/alubanana/tech-research-dashboard
   - id: ai-memory
-    title: AI 对话记忆与知识管理
+    title: AI对话记忆与知识管理
     official_title: 个人AI助手记忆与知识管理
     category: AI 工具
     year: '2026'
-    summary: 记录聊过的内容、当前进度和资料变化，方便下次接着聊。
+    summary: 支持对话增量导入、资料版本检查和主题状态管理。
     image: /site-assets/ai-memory.png
     image_alt: AI记忆工具的来源版本和阅读记录演示
     path: /projects/ai-memory/
@@ -34,7 +34,7 @@ projects:
 legacy:
   LOL-Analysis:
     title: 英雄联盟：比赛预测与英雄聚类
-    summary: 两类预测任务、PCA 与英雄分组，以及现在回看时需要讲清楚的问题。
+    summary: 使用职业赛事数据比较胜负预测模型，分析英雄特征与阵容表现。
     image: /images/lol/lol11.jpg
     category: 游戏分析
     refresh_path: /projects/league-of-legends/
@@ -45,21 +45,21 @@ legacy:
     category: 运营模拟
   LSTM-Prediction-on-Private-Equity:
     title: 私募基金现金流预测
-    summary: 比较序列特征与 Encoder–Decoder LSTM 的预测方案。
+    summary: 私募基金现金流的序列特征分析与LSTM预测。
     category: 时间序列
   NBA-Database-Design:
     title: NBA 数据库与查询应用
-    summary: 数据库设计、SQL 查询和 Web 应用的课程实践。
+    summary: 使用PostgreSQL和Flask开发NBA数据库与查询应用。
     category: 数据应用
   Election-Prediction:
     title: 美国选举预测
-    summary: 人口特征、文本信息与预测模型的课程探索。
+    summary: 结合人口特征与文本信息，分析美国选举结果。
     category: 预测建模
   Tools-Squirrel:
     title: 中央公园松鼠观察记录
-    summary: 用 Django 管理观察记录，并在地图上展示位置。
+    summary: 使用Django管理中央公园松鼠观察记录，提供地图展示。
     category: Web 应用
   NBA-Shot-Prediction:
     title: NBA 投篮预测
-    summary: 探索投篮特征、分类模型和特征选择。
+    summary: 分析投篮位置等特征，比较分类模型与特征选择方法。
     category: 体育分析

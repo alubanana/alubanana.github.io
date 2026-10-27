@@ -95,15 +95,15 @@ def main():
         reading_page(meta['path'], meta, body, kicker='NOTES / 开发笔记')
     def note_rows():
         return ''.join(f'<a class="note-row" href="{n["path"]}"><div><span class="meta">{E(n["kind"])} · {E(n["date"])}</span><h3>{E(n["title"])}</h3><p>{E(n["description"])}</p></div><span aria-hidden="true">↗</span></a>' for n in notes)
-    feature = f'''<a class="revisit" href="/projects/league-of-legends/"><div><p class="eyebrow">2020 项目 / 2026 回看</p><h2>英雄联盟：<br>比赛预测与英雄聚类</h2><p>重新讲清两类预测、英雄分组和当年的结果。</p><span class="text-link">阅读项目回看 ↗</span></div><img src="/images/lol/lol11.jpg" alt="英雄联盟原项目插图" loading="lazy"></a>'''
-    home = f'''<section class="hero"><div><p class="eyebrow">DATA / GAMES / AI</p><h1>陈安楠<span>Annan Chen</span></h1><p class="hero-intro">{E(CONFIG['intro'])}</p><a class="text-link" href="/about/">关于我 ↗</a></div><div class="hero-portrait"><img src="/site-assets/portrait.jpeg" alt="陈安楠" width="400" height="500"><span>项目 · 实验 · 记录</span></div></section>
-<section class="section"><div class="section-head"><h2>最近在做</h2><a href="/projects/">全部项目 ↗</a></div><div class="project-grid">{cards}</div></section>
+    feature = f'''<a class="revisit" href="/projects/league-of-legends/"><div><p class="eyebrow">2020 项目 / 2026 回看</p><h2>英雄联盟：<br>比赛预测与英雄聚类</h2><p>职业赛事数据的胜负预测、英雄聚类与阵容分析。</p><span class="text-link">阅读分析 ↗</span></div><img src="/images/lol/lol11.jpg" alt="英雄联盟原项目插图" loading="lazy"></a>'''
+    home = f'''<section class="hero"><div><p class="eyebrow">DATA / GAMES / AI</p><h1>陈安楠<span>Annan Chen</span></h1><p class="hero-intro">{E(CONFIG['intro'])}</p><a class="text-link" href="/about/">关于我 ↗</a></div><div class="hero-portrait"><img src="/site-assets/portrait.jpeg" alt="陈安楠" width="400" height="500"></div></section>
+<section class="section"><div class="section-head"><h2>个人项目</h2><a href="/projects/">全部项目 ↗</a></div><div class="project-grid">{cards}</div></section>
 <section class="section">{feature}</section><section class="section"><div class="section-head"><h2>开发笔记</h2><a href="/notes/">全部笔记 ↗</a></div>{note_rows()}</section>'''
     page('/', '陈安楠 / Annan Chen', home, CONFIG['intro'])
     listing = ''.join(f'<a class="archive-row" href="{item.get("refresh_path",item["path"])}"><span class="archive-year">{str(item["date"])[:4]}</span><div><h3>{E(item["title"])}</h3><p>{E(item["summary"])}</p></div><span class="archive-type">{E(item["category"])} ↗</span></a>' for item in legacy)
-    page('/projects/', '项目', heading('PROJECTS', '项目', '写过的工具、做过的分析，以及后来重新回看的项目。') + f'<div class="project-grid">{cards}</div><section class="section"><div class="section-head"><h2>早期项目</h2><a href="/archive/">按年份查看 ↗</a></div>{listing}</section>', '近期AI工具、科技研究与早期数据分析项目。')
-    page('/notes/', '笔记', heading('NOTES', '笔记', '记录开发中的问题、做法和修改。') + note_rows(), 'AI对话记忆和科技研究工具的开发笔记。')
-    archive_html = heading('ARCHIVE', '早期项目', '2018—2020 年的课程、研究和团队项目。')
+    page('/projects/', '项目', heading('PROJECTS', '项目', 'AI应用、研究工具与数据分析项目。') + f'<div class="project-grid">{cards}</div><section class="section"><div class="section-head"><h2>早期项目</h2><a href="/archive/">按年份查看 ↗</a></div>{listing}</section>', '近期AI工具、科技研究与早期数据分析项目。')
+    page('/notes/', '笔记', heading('NOTES', '开发笔记') + note_rows(), 'AI对话记忆和科技研究工具的开发笔记。')
+    archive_html = heading('ARCHIVE', '早期项目', '2018—2020年课程与研究项目。')
     for year in ['2020', '2019', '2018']:
         rows = ''.join(f'<a class="archive-row" href="{item["path"]}"><span class="archive-year">{E(item["date"])}</span><div><h3>{E(item["title"])}</h3><p>{E(item["summary"])}</p></div><span aria-hidden="true">↗</span></a>' for item in legacy if str(item['date']).startswith(year))
         archive_html += f'<section class="archive-group" id="{year}"><h2>{year}</h2>{rows}</section>'
