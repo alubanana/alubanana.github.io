@@ -8,6 +8,7 @@
 |---|---|
 | 首页介绍、项目列表、外链 | `content/catalog.yml` |
 | 关于我 | `content/pages/about.md` |
+| 城市路线、教育与工作时间线 | `content/journey.yml` |
 | 近期项目详情、英雄联盟回看 | `content/projects/*.md` |
 | 开发笔记 | `content/notes/*.md` |
 | 2018—2020 原文章 | `_posts/YYYY-MM-DD-*.md` |

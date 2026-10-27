@@ -31,7 +31,7 @@ def render_markdown(text):
     result = re.sub(r'<table>', '<div class="table-scroll"><table>', result).replace('</table>', '</table></div>')
     return result, md.toc
 
-def layout(title, body, path, description='', kind='', toc='', article=False, math=False):
+def layout(title, body, path, description='', kind='', toc='', article=False, math=False, scripts=()):
     active = 'Projects' if path.startswith('/projects') else 'Notes' if path.startswith('/notes') else 'About' if path == '/about/' else 'Archive' if path.startswith('/archive') else ''
     nav = ''.join(f'<a href="{url}"'+(' aria-current="page"' if label == active else '')+f'>{label}</a>'
                   for label, url in [('Projects','/projects/'),('Notes','/notes/'),('About','/about/')])
@@ -39,6 +39,7 @@ def layout(title, body, path, description='', kind='', toc='', article=False, ma
     document_title = title if 'Annan Chen' in title else title + ' · Annan Chen'
     head = f'<title>{E(document_title)}</title><meta name="description" content="{E(description)}"><link rel="canonical" href="{canonical}"><meta property="og:title" content="{E(title)}"><meta property="og:description" content="{E(description)}"><meta property="og:url" content="{canonical}"><meta property="og:type" content="'+('article' if article else 'website')+'">'
     extra = '<script>window.MathJax={tex:{inlineMath:[["$","$"],["\\\\(","\\\\)"]]}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-mml-chtml.js"></script>' if math else ''
+    extra += ''.join(f'<script defer src="{E(src)}"></script>' for src in scripts)
     return f'''<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">{head}<meta name="theme-color" content="#f7f5f0"><link rel="icon" href="/site-assets/favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="/site-assets/style.css">{extra}</head><body>
 <a class="skip" href="#content">跳到正文</a><header class="site-header"><a class="wordmark" href="/">Annan Chen<span>陈安楠</span></a><nav aria-label="主导航">{nav}</nav></header>
 <main id="content">{body}</main><footer class="site-footer"><span>© 2026 陈安楠</span><div><a href="/archive/">早期项目</a><a href="{E(CONFIG['github'])}">GitHub ↗</a><a href="{E(CONFIG['linkedin'])}">LinkedIn ↗</a></div></footer></body></html>'''
@@ -65,6 +66,18 @@ def reading_page(path, meta, body, links='', kicker='', image=''):
     side = f'<aside class="article-toc"><p>目录</p>{toc}</aside>' if '<li>' in toc else ''
     article = f'<div class="article-wrap">{head}{info}{buttons}<div class="reading-layout"><article class="prose">{rendered}</article>{side}</div></div>'
     page(path, meta['title'], article, meta.get('description', ''), article=True, math=meta.get('mathjax', False))
+
+def about_page(meta, body):
+    journey = yaml.safe_load((ROOT/'content/journey.yml').read_text(encoding='utf-8'))
+    cities = {city['id']: city for city in journey['cities']}
+    buttons = ''.join(f'''<button class="city-stop" type="button" data-city="{E(city['id'])}" aria-pressed="false" aria-controls="journey-timeline"><span class="city-point" aria-hidden="true"></span><span class="city-country">{E(city['country'])}</span><strong>{E(city['name'])}</strong><span class="city-english">{E(city['english'])}</span><span class="city-period">{E(city['period'])}</span></button>''' for city in cities.values())
+    entries = ''.join(f'''<li class="journey-entry" data-city="{E(chapter['city'])}"><div class="journey-period">{E(chapter['period'])}</div><div class="journey-detail"><p class="journey-meta"><span>{E(cities[chapter['city']]['name'])}</span><span>{E(chapter['kind'])}</span></p><h3>{E(chapter['title'])}</h3><p>{E(chapter['detail'])}</p></div></li>''' for chapter in journey['chapters'])
+    roadmap = f'''<section class="journey" aria-labelledby="journey"><div class="journey-heading"><div><p class="eyebrow">2012 — NOW</p><h2 id="journey">城市与经历</h2></div><button type="button" class="journey-reset" data-city="all" aria-pressed="true" aria-controls="journey-timeline">全部地点</button></div><div class="city-route" role="group" aria-label="按城市查看经历">{buttons}</div><p class="sr-only" aria-live="polite" id="journey-status">全部地点，共{len(journey['chapters'])}段经历。</p><ol class="journey-timeline" id="journey-timeline">{entries}</ol></section>'''
+    intro, rest = body.split('## 个人项目', 1)
+    intro_html, _ = render_markdown(intro)
+    rest_html, _ = render_markdown('## 个人项目'+rest)
+    content = heading('ABOUT', meta['title'])+f'<div class="prose about-intro">{intro_html}</div>'+roadmap+f'<div class="prose about-more">{rest_html}</div>'
+    page('/about/', meta['title'], content, meta.get('description',''), scripts=('/site-assets/journey.js',))
 
 def main():
     legacy = []
@@ -108,7 +121,7 @@ def main():
         rows = ''.join(f'<a class="archive-row" href="{item["path"]}"><span class="archive-year">{E(item["date"])}</span><div><h3>{E(item["title"])}</h3><p>{E(item["summary"])}</p></div><span aria-hidden="true">↗</span></a>' for item in legacy if str(item['date']).startswith(year))
         archive_html += f'<section class="archive-group" id="{year}"><h2>{year}</h2>{rows}</section>'
     page('/archive/', '早期项目', archive_html, '七个早期项目的原文归档。')
-    meta, body = load('content/pages/about.md'); reading_page('/about/', meta, body, kicker='ABOUT')
+    meta, body = load('content/pages/about.md'); about_page(meta, body)
     for project in projects:
         meta, body = load(project['source'])
         buttons = f'<a class="button" href="{project["demo"]}">打开演示 ↗</a><a class="button secondary" href="{project["repo"]}">GitHub ↗</a>'

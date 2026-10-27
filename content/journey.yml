@@ -1,0 +1,57 @@
+cities:
+  - id: fuzhou
+    name: 福州
+    english: Fuzhou
+    country: 中国
+    period: 2012—2015
+  - id: shenzhen
+    name: 深圳
+    english: Shenzhen
+    country: 中国
+    period: 2015—2019
+  - id: new-york
+    name: 纽约
+    english: New York
+    country: 美国
+    period: 2019—2024.02
+  - id: toronto
+    name: 多伦多
+    english: Toronto
+    country: 加拿大
+    period: 2024.02—2026.02
+  - id: guangzhou
+    name: 广州
+    english: Guangzhou
+    country: 中国
+    period: 2026.02—至今
+chapters:
+  - city: fuzhou
+    period: 2012—2015
+    kind: 教育
+    title: 福州一中
+    detail: 高中
+  - city: shenzhen
+    period: 2015—2019
+    kind: 教育
+    title: 香港中文大学（深圳）
+    detail: 工商管理学士 · 国际供应链和物流管理
+  - city: new-york
+    period: 2019—2020
+    kind: 教育
+    title: 哥伦比亚大学
+    detail: 运筹学硕士
+  - city: new-york
+    period: 2021—2024.02
+    kind: 工作
+    title: EXL / Amex
+    detail: 企业客户增长、营销分析与预测建模
+  - city: toronto
+    period: 2024.02—2026.01
+    kind: 工作
+    title: EXL / Amex
+    detail: 在多伦多继续从事企业客户业务分析
+  - city: guangzhou
+    period: 2026.02—至今
+    kind: 工作与个人项目
+    title: 游戏数据分析与AI应用
+    detail: 回国，在广州生活与工作
