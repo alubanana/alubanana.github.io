@@ -8,12 +8,16 @@
 |---|---|
 | 首页介绍、项目列表、外链 | `content/catalog.yml` |
 | 关于我 | `content/pages/about.md` |
-| 城市路线、教育与工作时间线 | `content/journey.yml` |
+| 单条教育、工作、实习时间线 | `content/timeline.yml`；`journey.yml`保留旧版数据 |
 | 近期项目详情、英雄联盟回看 | `content/projects/*.md` |
 | 开发笔记 | `content/notes/*.md` |
 | 2018—2020 原文章 | `_posts/YYYY-MM-DD-*.md` |
+| 英文介绍、笔记与近期项目 | `content/en/*.md` |
+| 七篇旧文完整中文翻译 | `content/translations/zh/*.md` |
 | 布局与构建 | `build.py` |
-| 字体、配色与响应式布局 | `site_assets/style.css` |
+| 字体、配色与响应式布局 | `site_assets/studio.css` |
+| 语言偏好、搜索与筛选 | `site_assets/site.js` |
+| 统计接收地址与启用状态 | `content/analytics.json` |
 | 图片 | `site_assets/`；早期文章继续使用 `images/` |
 
 `dist/`是构建结果，不手工修改。旧Jekyll主题文件保留作历史源码；当前网站由`build.py`和GitHub Actions构建。
@@ -47,6 +51,8 @@ kind: 开发笔记
 
 正文从标题以下开始；构建时自动加入笔记列表、站点地图和RSS。
 
+同时在`content/en/`添加同名英文Markdown。中文页面保留原地址，英文版使用`/en/`前缀；右上角语言入口保持同一篇文章，手动选择保存在浏览器。首次访问首页按浏览器语言选择，深层链接使用URL指定语言。
+
 ## 刷新旧项目
 
 1. 核对原文章、报告和代码，登记实际读过的版本。
@@ -54,7 +60,13 @@ kind: 开发笔记
 3. 大幅重写时，另写有回看日期的新页面，并从原文链接过去。历史实验结果注明出处；新实验单独记录数据、代码、切分和结果。
 4. 项目贡献按实际团队记录描述。改进方案与已完成的实验分别写清。
 
-英雄联盟是首篇回看示例：新页`/projects/league-of-legends/`，当年英文原文继续保留。其他六篇本轮整理版面与资源，没有重新训练或补写新实验。
+七篇旧文均有完整中文译文和英文原文，顶部有2026年阅读导引与流程图。修改原文后应同步对应译文；链接、图表、代码与数字由构建检查核对。英雄联盟另有`/projects/league-of-legends/`回看页，历史模型没有重新训练。
+
+项目库标题、摘要和筛选类别来自`catalog.yml`与`build.py`中的英文映射；时间线中的比赛标签集中在`build.py`的`timeline()`。
+
+## 访问统计
+
+统计后端在网站仓库外的独立`analytics-service/`项目，不把后台访问配置或访客记录放进GitHub。统计开关由`content/analytics.json`控制；只有完成具体字段与目的地授权、后台验证后才开启。关闭时不加载采集脚本。
 
 ## 两项独立工具
 

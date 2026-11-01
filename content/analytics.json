@@ -1,0 +1,8 @@
+{
+  "enabled": false,
+  "endpoint": "https://annan-site-analytics.regalpig32.chatgpt.site/api/collect",
+  "fields": ["page path", "language", "referring hostname", "device category", "browser category", "country or region", "timestamp", "anonymous visitor ID", "anonymous session ID", "click target without query parameters", "reading depth"],
+  "retention_days": 90,
+  "respect_do_not_track": true,
+  "respect_global_privacy_control": true
+}

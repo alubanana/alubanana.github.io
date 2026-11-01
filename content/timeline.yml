@@ -1,0 +1,36 @@
+timeline:
+  - period: 2012—2015
+    icon: school
+    badge: FZ1
+    title: {zh: 福州一中, en: Fuzhou No. 1 High School}
+    detail: {zh: 高中 · 福州, en: High school · Fuzhou}
+  - period: 2015—2019
+    icon: school
+    badge: CUHK
+    title: {zh: 香港中文大学（深圳）, en: 'The Chinese University of Hong Kong, Shenzhen'}
+    detail: {zh: 工商管理学士 · 国际供应链和物流管理, en: BBA · Global Supply Chain and Logistics Management}
+  - period: 2018.04—08
+    icon: work
+    badge: T
+    title: {zh: 腾讯 · IEG, en: Tencent · IEG}
+    detail: {zh: 商业分析实习 · 深圳, en: Business analytics internship · Shenzhen}
+  - period: 2019.06—08
+    icon: work
+    badge: C
+    title: {zh: 可口可乐, en: Coca-Cola}
+    detail: {zh: 商业分析实习 · 上海, en: Business analytics internship · Shanghai}
+  - period: 2019—2020
+    icon: school
+    badge: CU
+    title: {zh: 哥伦比亚大学, en: Columbia University}
+    detail: {zh: 运筹学硕士 · 纽约, en: MS in Operations Research · New York}
+  - period: 2021.04—2026.01
+    icon: work
+    badge: EXL
+    title: {zh: EXL / Amex, en: EXL / Amex}
+    detail: {zh: 企业客户增长、营销分析与预测建模 · 纽约 → 多伦多（2024.02）, en: 'Business customer growth, marketing analytics and predictive modeling · New York → Toronto (Feb 2024)'}
+  - period: 2026.02—NOW
+    icon: pin
+    badge: GZ
+    title: {zh: 广州, en: Guangzhou}
+    detail: {zh: 回国 · 游戏数据分析与个人AI项目, en: Returned to China · Game analytics and personal AI projects}
