@@ -130,7 +130,7 @@ def timeline(lang):
     for period,kind,badge,zh,en,zdetail,edetail in JOURNEY:
         awards=''
         if badge=='CUHK':
-            awards='<div class="awards">'+''.join('<span>'+icon('award')+E(label)+'</span>' for label in [tr('汇丰 / 港大亚太商赛 · 中国区冠军','HSBC / HKU Asia Pacific Business Case Competition · China champion',lang),tr('CFA投资研究挑战赛 · 中国区冠军','CFA Research Challenge · China champion',lang)])+'</div>'
+            awards='<div class="awards">'+''.join('<span>'+icon('award')+E(label)+'</span>' for label in [tr('汇丰 / 港大亚太商赛 · 中国区冠军','HSBC / HKU Asia Pacific Business Case Competition · China champion',lang),tr('CFA投资研究挑战赛 · 华南赛区冠军','CFA Research Challenge · South China regional champion',lang)])+'</div>'
         rows+=f'<li><div class="journey-period">{period}</div><div class="timeline-icon">{icon(kind)}</div><div class="journey-detail"><h3><span class="org-badge" aria-hidden="true">{badge}</span>{E(tr(zh,en,lang))}</h3><p>{E(tr(zdetail,edetail,lang))}</p>{awards}</div></li>'
     return '<section class="journey" aria-labelledby="journey">'+f'<div class="section-head"><h2 id="journey">{tr("经历","Journey",lang)}</h2><span class="meta">2012 → NOW</span></div><ol class="journey-timeline">'+rows+'</ol></section>'
 
