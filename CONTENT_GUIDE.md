@@ -66,7 +66,9 @@ kind: 开发笔记
 
 ## 访问统计
 
-统计后端在网站仓库外的独立`analytics-service/`项目，不把后台访问配置或访客记录放进GitHub。统计开关由`content/analytics.json`控制；只有完成具体字段与目的地授权、后台验证后才开启。关闭时不加载采集脚本。
+统计后端在网站仓库外的独立`analytics-service/`项目，不把后台访问配置或访客记录放进GitHub。统计开关由`content/analytics.json`控制；关闭时不加载采集脚本。字段、接收端与90天保存窗口已获授权，采集入口公开可达，后台数据和CSV由服务器校验所有者身份。
+
+前端尊重DNT/GPC，页脚可关闭统计并清除匿名标识；`?analytics=test`用于合成访问验证，不计正式数值。两个独立demo复用主站脚本，只在本人正式域名运行，预览与fork不发送数据。维护时执行`node tests/analytics.cjs`和`node tests/language.cjs`，部署后检查匿名导出被拒绝及事件入库。
 
 ## 两项独立工具
 
