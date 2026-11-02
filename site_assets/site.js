@@ -43,4 +43,14 @@
   }
   window.addEventListener('hashchange',openOriginal);
   openOriginal();
+  function openJourneyRecord() {
+    let id;
+    try { id=decodeURIComponent(location.hash.slice(1)); } catch { return; }
+    if (!id) return;
+    const node=document.getElementById(id);
+    const record=node?.matches('.journey-timeline>li') ? node.querySelector('details.journey-record') : null;
+    if (record) record.open=true;
+  }
+  window.addEventListener('hashchange',openJourneyRecord);
+  openJourneyRecord();
 })();

@@ -1,36 +1,82 @@
 timeline:
   - period: 2012—2015
+    id: fuzhou
     icon: school
     badge: FZ1
     title: {zh: 福州一中, en: Fuzhou No. 1 High School}
     detail: {zh: 高中 · 福州, en: High school · Fuzhou}
+    logos: [fuzhou]
+    record:
+      zh: 2012年至2015年，我在福州一中读高中。之后离开福州，到深圳读大学。
+      en: I attended Fuzhou No. 1 High School from 2012 to 2015, before moving to Shenzhen for university.
   - period: 2015—2019
+    id: shenzhen
     icon: school
     badge: CUHK
     title: {zh: 香港中文大学（深圳）, en: 'The Chinese University of Hong Kong, Shenzhen'}
     detail: {zh: 工商管理学士 · 国际供应链和物流管理, en: BBA · Global Supply Chain and Logistics Management}
+    logos: [cuhksz]
+    record:
+      zh: 2015年到深圳，在港中深学习国际供应链和物流管理，2019年取得工商管理学士学位。同年赴纽约，继续学习运筹学。
+      en: I moved to Shenzhen in 2015 to study Global Supply Chain and Logistics Management at CUHK-Shenzhen, graduating with a BBA in 2019. Later that year, I moved to New York to study operations research.
   - period: 2018.04—08
+    id: tencent
     icon: work
     badge: T
     title: {zh: 腾讯 · IEG, en: Tencent · IEG}
     detail: {zh: 商业分析实习 · 深圳, en: Business analytics internship · Shenzhen}
+    logos: [tencent]
+    record:
+      zh: 2018年在深圳的腾讯IEG做商业分析实习。后来整理的英雄联盟赛事研究保留在项目库中，包含当年的模型、结果，以及2026年的回看。
+      en: I interned in business analytics at Tencent IEG in Shenzhen in 2018. My later League of Legends match study is in the project archive, with the original models and results alongside a 2026 revisit.
+    links:
+      - path: /projects/league-of-legends/
+        label: {zh: 英雄联盟赛事研究, en: League of Legends study}
   - period: 2019.06—08
+    id: coca-cola
     icon: work
     badge: C
     title: {zh: 可口可乐, en: Coca-Cola}
     detail: {zh: 商业分析实习 · 上海, en: Business analytics internship · Shanghai}
+    logos: [coca-cola]
+    record:
+      zh: 2019年夏天在上海的可口可乐做商业分析实习。同年赴纽约，在哥伦比亚大学继续学习运筹学。
+      en: I spent the summer of 2019 in Shanghai as a business analytics intern at Coca-Cola. Later that year, I moved to New York to study operations research at Columbia.
   - period: 2019—2020
+    id: columbia
     icon: school
     badge: CU
     title: {zh: 哥伦比亚大学, en: Columbia University}
     detail: {zh: 运筹学硕士 · 纽约, en: MS in Operations Research · New York}
+    logos: [columbia]
+    record:
+      zh: 在哥大学习运筹学期间，做过预测建模、数据库和Web应用项目。项目库中保留了私募基金现金流预测、NBA数据库，以及中央公园松鼠观察记录应用的原文与代码入口。
+      en: While studying operations research at Columbia, I worked on predictive models, databases and web applications. The archive retains articles and code links for private equity cash flow forecasting, an NBA database and a Central Park squirrel sightings application.
+    links:
+      - path: /archive/
+        label: {zh: 查看当年的项目, en: Browse the project archive}
   - period: 2021.04—2026.01
+    id: exl-amex
     icon: work
     badge: EXL
     title: {zh: EXL / Amex, en: EXL / Amex}
     detail: {zh: 企业客户增长、营销分析与预测建模 · 纽约 → 多伦多（2024.02）, en: 'Business customer growth, marketing analytics and predictive modeling · New York → Toronto (Feb 2024)'}
+    logos: [exl, amex]
+    record:
+      zh: 在EXL负责美国运通企业客户业务的数据分析，工作涉及客户增长、营销分析和预测建模。2024年2月从美国搬到多伦多，继续这段工作，直到2026年初。
+      en: At EXL, I worked on analytics for American Express business customers, covering growth, marketing analytics and predictive modeling. I moved from the United States to Toronto in February 2024 and continued in this role until early 2026.
   - period: 2026.02—NOW
+    id: guangzhou
     icon: pin
     badge: GZ
     title: {zh: 广州, en: Guangzhou}
     detail: {zh: 回国 · 游戏数据分析与个人AI项目, en: Returned to China · Game analytics and personal AI projects}
+    logos: [netease]
+    record:
+      zh: 2026年2月回国，目前在广州从事游戏数据分析。工作之外，持续开发科技研究网站和AI对话记忆工具，项目的公开演示与开发记录都收录在这里。
+      en: I returned to China in February 2026 and now work in game analytics in Guangzhou. Outside work, I develop a technology research radar and an AI conversation memory tool. Their public demos and development notes are collected on this site.
+    links:
+      - path: /projects/tech-research/
+        label: {zh: 科技研究网站, en: Technology research radar}
+      - path: /projects/ai-memory/
+        label: {zh: AI对话记忆, en: AI conversation memory}

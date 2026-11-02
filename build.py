@@ -89,7 +89,7 @@ def layout(title, body, path, lang, description='', article=False, math=False):
     nav = ''.join(f'<a href="{url(p,lang)}"'+(' aria-current="page"' if path.startswith(p) else '')+f'>{tr(z,e,lang)}</a>' for z,e,p in [('项目','Projects','/projects/'),('笔记','Notes','/notes/'),('关于','About','/about/')])
     langs = ''.join(f'<a href="{url(path,l)}" data-set-lang="{l}" lang="'+('en' if l=='en' else 'zh-CN')+'"'+(' aria-current="true"' if l==lang else '')+'>'+label+'</a>' for l,label in [('zh','中文'),('en','EN')])
     extra = '<script>window.MathJax={tex:{inlineMath:[["$","$"],["\\\\(","\\\\)"]]}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-mml-chtml.js"></script>' if math else ''
-    tracking_control = '<button id="analytics-toggle" type="button">'+tr("关闭统计","Turn analytics off",lang)+'</button>' if TRACKING_ENABLED else ''
+    tracking_control = '<button id="analytics-toggle" type="button">'+tr("统计设置","Analytics settings",lang)+'</button>' if TRACKING_ENABLED else ''
     tracking_script = f'<script defer src="/site-assets/analytics.js" data-endpoint="{ANALYTICS}/api/collect"></script>' if TRACKING_ENABLED else ''
     return f'''<!doctype html><html lang="{'en' if lang=='en' else 'zh-CN'}" data-locale="{lang}"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>{E(doc_title)}</title><meta name="description" content="{E(description)}"><link rel="canonical" href="{SITE+quote(current,safe='/')}"><link rel="alternate" hreflang="zh-CN" href="{zh}"><link rel="alternate" hreflang="en" href="{en}"><link rel="alternate" hreflang="x-default" href="{zh}"><meta property="og:title" content="{E(title)}"><meta property="og:description" content="{E(description)}"><meta property="og:url" content="{SITE+quote(current,safe='/')}"><meta name="theme-color" content="#f5f4ed"><link rel="icon" href="/site-assets/favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="/site-assets/studio.css">{extra}<script defer src="/site-assets/site.js"></script>{tracking_script}</head><body data-content-id="{E(path)}" data-article="{str(article).lower()}"><a class="skip" href="#content">{tr('跳到正文','Skip to content',lang)}</a><header class="site-header"><a class="wordmark" href="{url('/',lang)}">ac<span>Annan Chen<br><small>陈安楠</small></span></a><nav aria-label="{tr('主导航','Main navigation',lang)}">{nav}</nav><div class="language-switch" aria-label="Language / 语言">{langs}</div></header><main id="content">{body}</main><footer class="site-footer"><span>© 2026 Annan Chen</span><div><a href="{url('/archive/',lang)}">{tr('早期项目','Archive',lang)}</a><a href="{E(CONFIG['github'])}">GitHub ↗</a><a href="{E(CONFIG['linkedin'])}">LinkedIn ↗</a><a href="{url('/privacy/',lang)}">{tr('访问统计','Analytics',lang)}</a>{tracking_control}</div></footer></body></html>'''
 
@@ -123,15 +123,24 @@ def card(p,lang):
     title,summary,category=EN_PROJECTS[p['id']] if lang=='en' else (p['title'],p['summary'],p['category'])
     return f'<article class="project-card" data-project data-category="{p["filter"]}" data-search="{E(title+" "+summary+" "+category+" "+p["id"]+" "+EN_PROJECTS[p["id"]][0])}"><a class="project-image" href="{url(p["path"],lang)}" aria-label="{E(title)}">{artwork(p["id"])}</a><div class="project-card-body"><p class="meta">{E(p["year"])} <span>/</span> {E(category)}</p><h3><a href="{url(p["path"],lang)}">{E(title)}</a></h3><p>{E(summary)}</p><a class="card-link" href="{url(p["path"],lang)}">{tr("查看项目","Read project",lang)} {icon("arrow")}</a></div></article>'
 
-JOURNEY=[(c["period"],c["icon"],c["badge"],c["title"]["zh"],c["title"]["en"],c["detail"]["zh"],c["detail"]["en"]) for c in yaml.safe_load((ROOT/"content/timeline.yml").read_text(encoding="utf-8"))["timeline"]]
+JOURNEY=yaml.safe_load((ROOT/"content/timeline.yml").read_text(encoding="utf-8"))["timeline"]
+ORGANIZATIONS={
+    'fuzhou':('福州一中','fuzhou.jpg'),
+    'cuhksz':('CUHK-Shenzhen','cuhksz.png'),
+    'tencent':('Tencent','tencent.png'),
+    'coca-cola':('Coca-Cola','coca-cola.png'),
+    'columbia':('Columbia University','columbia.png'),
+    'exl':('EXL','exl.png'),
+    'amex':('American Express','amex.svg'),
+    'netease':('NetEase Games','netease.png')}
 
 def timeline(lang):
     rows=''
-    for period,kind,badge,zh,en,zdetail,edetail in JOURNEY:
-        awards=''
-        if badge=='CUHK':
-            awards='<div class="awards">'+''.join('<span>'+icon('award')+E(label)+'</span>' for label in [tr('汇丰 / 港大亚太商赛 · 中国区冠军','HSBC / HKU Asia Pacific Business Case Competition · China champion',lang),tr('CFA投资研究挑战赛 · 华南赛区冠军','CFA Research Challenge · South China regional champion',lang)])+'</div>'
-        rows+=f'<li><div class="journey-period">{period}</div><div class="timeline-icon">{icon(kind)}</div><div class="journey-detail"><h3><span class="org-badge" aria-hidden="true">{badge}</span>{E(tr(zh,en,lang))}</h3><p>{E(tr(zdetail,edetail,lang))}</p>{awards}</div></li>'
+    for entry in JOURNEY:
+        marks=''.join(f'<img src="/site-assets/organizations/{ORGANIZATIONS[key][1]}" alt="{E(ORGANIZATIONS[key][0])}" width="48" height="48" loading="lazy">' for key in entry['logos'])
+        links=''.join(f'<a href="{url(item["path"],lang)}">{E(item["label"][lang])} <span aria-hidden="true">↗</span></a>' for item in entry.get('links',[]))
+        photos=''.join(f'<figure><img src="{E(photo["src"])}" alt="{E(photo["alt"][lang])}" loading="lazy"><figcaption>{E(photo.get("caption",{}).get(lang,""))}</figcaption></figure>' for photo in entry.get('photos',[]))
+        rows+=f'''<li id="{E(entry['id'])}"><div class="journey-period">{E(entry['period'])}</div><div data-org="{E(entry['id'])}" class="timeline-mark{' paired' if len(entry['logos'])>1 else ''}">{marks}</div><details class="journey-record"><summary><span class="journey-summary"><span class="journey-title">{E(entry['title'][lang])}</span><span class="journey-subtitle">{E(entry['detail'][lang])}</span></span><span class="record-indicator" aria-hidden="true">+</span></summary><div class="journey-entry"><p>{E(entry['record'][lang])}</p>{photos}{'<div class="journey-links">'+links+'</div>' if links else ''}</div></details></li>'''
     return '<section class="journey" aria-labelledby="journey">'+f'<div class="section-head"><h2 id="journey">{tr("经历","Journey",lang)}</h2><span class="meta">2012 → NOW</span></div><ol class="journey-timeline">'+rows+'</ol></section>'
 
 GUIDES={

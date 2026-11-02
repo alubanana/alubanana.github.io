@@ -58,12 +58,14 @@ def main():
         assert 'hreflang="zh-CN"' in raw and 'hreflang="en"' in raw
         assert 'data-set-lang="zh"' in raw and 'data-set-lang="en"' in raw
         assert ('<html lang="en"' in raw) == route.startswith('/en/')
-        assert not any(x in raw for x in ['网易','NetEase','fonts.googleapis.com'])
+        assert 'fonts.googleapis.com' not in raw
     for lang in ('','en/'):
         about = (OUT/lang/'about/index.html').read_text(encoding='utf-8')
-        assert about.count('class="timeline-icon"') == 7
+        assert about.count('class="journey-record"') == 7
+        assert about.count('<summary>') == 7 and 'class="awards"' not in about
+        assert '/site-assets/organizations/netease.' in about
         assert 'EXL / Amex' in about and '2012—2015' in about and '2018.04—08' in about
-        assert ('CFA Research Challenge' if lang else 'CFA投资研究挑战赛') in about
+        assert 'CFA' not in about and 'HSBC' not in about
         projects = (OUT/lang/'projects/index.html').read_text(encoding='utf-8')
         assert projects.count('data-project ') == 9 and 'id="project-search"' in projects
     import importlib.util

@@ -1,0 +1,55 @@
+{
+  "checked_date": "2026-11-02",
+  "usage": "Institution marks identify the schools and companies in this personal career timeline. No affiliation or endorsement is implied.",
+  "assets": [
+    {
+      "file": "fuzhou.jpg",
+      "asset_url": "http://www.fzyz.net/static/img/logo.4c919bb.jpg",
+      "source_url": "http://www.fzyz.net/",
+      "sha256": "39a8c6234caab174ed2dca7f86a053eb32a1d5ed23cb9004ade16c66bcb2c4f2"
+    },
+    {
+      "file": "cuhksz.png",
+      "asset_url": "https://www.cuhk.edu.cn/themes/custom/cuhk_ui/favicon.ico",
+      "source_url": "https://www.cuhk.edu.cn/zh-hans",
+      "sha256": "48c107e52992fc1ee1c15117d365e30e054515739f4f6b345ca1c39a0a293fb0"
+    },
+    {
+      "file": "tencent.png",
+      "asset_url": "https://www.tencent.com/wp-content/uploads/2024/05/04_Tencent_Graphics2-2.png",
+      "source_url": "https://www.tencent.com/newsroom/media-resources/logos/",
+      "sha256": "b30969d3b66ab9472a10d27280802cba5ecb762aaf18ae36491ab2ad7550cb28"
+    },
+    {
+      "file": "coca-cola.png",
+      "asset_url": "https://static-p58902-e658605.adobeaemcloud.com/ae18711f0739b0c9e03feba31ee3212d203c6ac9a6a8bd4b84beba8a3c7ed814/resources/favicons/apple-touch-icon.png",
+      "source_url": "https://www.coca-colacompany.com/",
+      "sha256": "4c12e06ed14b564e111d3ded968d084382966f11432904b7c9e104b80eb12f97"
+    },
+    {
+      "file": "columbia.png",
+      "asset_url": "https://history.columbia.edu/wp-content/uploads/sites/29/2018/08/favicon-crown.png",
+      "source_url": "https://history.columbia.edu/",
+      "sha256": "36693774c244310cec5ac85e9f201cfde28b5196d5eb7a221a7a91d0956ecae0"
+    },
+    {
+      "file": "exl.png",
+      "asset_url": "https://www.exlservice.com/themes/exl_service/apple-touch-icon.png",
+      "source_url": "https://www.exlservice.com/",
+      "sha256": "ed3f3e8d3ac8b849b62d844b7dfef392c93b9499365fd5ecc5df194c6deb90d9"
+    },
+    {
+      "file": "amex.svg",
+      "asset_url": "https://www.aexp-static.com/cdaas/one/statics/axp-static-assets/1.8.0/package/dist/img/logos/dls-logo-bluebox-solid.svg",
+      "source_url": "https://www.americanexpress.com/",
+      "sha256": "028f643755987211bf2f3add6c62ae1870a888cf2f4fe3040a4fac7dce2543ab"
+    },
+    {
+      "file": "netease.png",
+      "asset_url": "https://www.neteasegames.com/favicon.ico",
+      "source_url": "https://www.neteasegames.com/",
+      "sha256": "1407758207aac024b12e4ecd3fe8620c25d397cb5d4a0b9b3f5c7f6523a4bdcc",
+      "format_note": "Official ICO decoded losslessly to PNG; artwork unchanged."
+    }
+  ]
+}

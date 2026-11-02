@@ -1,93 +1,41 @@
 (() => {
-  'use strict';
-  const script = document.currentScript;
-  const endpoint = script?.dataset.endpoint;
-  const lang = document.documentElement.dataset.locale === 'en' ? 'en' : 'zh';
-  const key = 'ac-analytics';
-  const visitorKey = 'ac-visitor';
-  const sessionKey = 'ac-session';
-  const day = 86400000;
-  const now = () => Date.now();
-  const read = k => { try { return localStorage.getItem(k); } catch { return null; } };
-  const write = (k,v) => { try { localStorage.setItem(k,v); } catch {} };
-  const remove = k => { try { localStorage.removeItem(k); } catch {} };
-  const parse = k => { try { return JSON.parse(read(k)); } catch { return null; } };
-  const uuid = () => crypto.randomUUID();
-  const query = new URLSearchParams(location.search);
-  const testMode = query.get('analytics') === 'test';
-  if (query.get('analytics') === 'off') write(key, 'off');
-  const policyDisabled = navigator.globalPrivacyControl === true || navigator.doNotTrack === '1';
-  const enabled = () => !policyDisabled && read(key) !== 'off';
-  function updateControl() {
-    const button = document.getElementById('analytics-toggle');
-    if (button) {
-      button.textContent = policyDisabled ? (lang === 'en' ? 'Tracking disabled by browser' : '浏览器已禁用统计') : enabled() ? (lang === 'en' ? 'Turn analytics off' : '关闭统计') : (lang === 'en' ? 'Turn analytics on' : '开启统计');
-      button.disabled = policyDisabled;
-      button.setAttribute('aria-pressed', String(enabled()));
-    }
-  }
-  document.getElementById('analytics-toggle')?.addEventListener('click', () => {
-    if (enabled()) { write(key,'off'); remove(visitorKey); remove(sessionKey); memoryVisitor=null; memorySession=null; }
-    else write(key,'on');
-    updateControl();
-    if (enabled()) track('pageview');
-  });
-  updateControl();
-  const production = location.hostname === 'alubanana.github.io' && location.protocol === 'https:';
-  const approvedEndpoint = endpoint === 'https://annan-site-analytics.regalpig32.chatgpt.site/api/collect';
-  const path = document.body.dataset.contentId || location.pathname;
-  let memoryVisitor = null, memorySession = null;
-  function identity() {
-    const time = now();
-    let visitor = parse(visitorKey) || memoryVisitor;
-    let fresh = false;
-    if (!visitor || !visitor.id || !visitor.expires || visitor.expires <= time) {
-      visitor = {id: uuid(), expires: time + 90 * day}; fresh = true;
-      write(visitorKey,JSON.stringify(visitor)); memoryVisitor = visitor;
-    }
-    let session = parse(sessionKey) || memorySession;
-    if (fresh || !session || !session.id || session.visitor !== visitor.id || time - session.last > 30 * 60000) session = {id:uuid(),visitor:visitor.id,last:time,returning:!fresh};
-    session.last = time; memorySession = session; write(sessionKey,JSON.stringify(session));
-    return {visitor:visitor.id,session:session.id,returning:session.returning};
-  }
-  function cleanTarget(link) {
-    try { const u = new URL(link,location.href); if (!/^https?:$/.test(u.protocol)) return ''; return u.origin === location.origin ? u.pathname : u.hostname + u.pathname; } catch { return ''; }
-  }
-  function track(type, extra = {}) {
-    if (!enabled() || !production || !approvedEndpoint) return;
-    let referrer = '';
-    try { referrer = document.referrer ? new URL(document.referrer).hostname : ''; } catch {}
-    const ua = navigator.userAgent || '';
-    const device = navigator.userAgentData?.mobile || /Mobi|iPhone/i.test(ua) ? 'mobile' : /iPad|Tablet|Android/i.test(ua) ? 'tablet' : 'desktop';
-    const event = {id:uuid(),type,path,language:lang,referrer,device,...identity(),...extra,...(testMode?{test:true}:{})};
-    // No URL parameters, page text, form values, precise location or full UA are sent.
-    fetch(endpoint,{method:'POST',mode:'cors',credentials:'omit',keepalive:true,headers:{'Content-Type':'application/json'},body:JSON.stringify(event)}).catch(() => {});
-  }
-  track('pageview');
-  document.addEventListener('click', event => {
-    const link = event.target.closest('a[href]');
-    if (!link || link.origin === location.origin && link.pathname === location.pathname && link.hash) return;
-    const target = cleanTarget(link.href);
-    if (!target) return;
-    track(link.dataset.setLang ? 'language_switch' : link.dataset.event === 'demo_open' ? 'demo_open' : 'click', {target});
-  });
-  if (document.body.dataset.article === 'true') {
-    const sent = new Set();
-    let visibleSince = document.visibilityState === 'visible' ? now() : null;
-    let visibleElapsed = 0;
-    document.addEventListener('visibilitychange',()=>{
-      if (visibleSince !== null) visibleElapsed += now()-visibleSince;
-      visibleSince = document.visibilityState === 'visible' ? now() : null;
-    });
-    let scheduled = false;
-    function reading() {
-      scheduled = false;
-      if (!enabled() || document.visibilityState !== 'visible' || visibleElapsed+(visibleSince===null?0:now()-visibleSince) < 10000) return;
-      const range = document.documentElement.scrollHeight-innerHeight;
-      const depth = range <= 0 ? 100 : Math.min(100,Math.round(scrollY/range*100));
-      [25,50,75,100].forEach(mark => { if (depth >= mark-1 && !sent.has(mark)) {sent.add(mark);track('read',{depth:mark});} });
-    }
-    addEventListener('scroll',()=>{if(!scheduled){scheduled=true;requestAnimationFrame(reading);}}, {passive:true});
-    const timer = setInterval(()=>{reading();if(sent.has(100))clearInterval(timer);},1000);
-  }
+'use strict';
+const endpoint=document.currentScript?.dataset.endpoint;
+if(location.hostname!=='alubanana.github.io'||location.protocol!=='https:'||endpoint!=='https://annan-site-analytics.regalpig32.chatgpt.site/api/collect')return;
+const lang=document.documentElement.dataset.locale==='en'?'en':'zh',t=(zh,en)=>lang==='en'?en:zh;
+const version='2026-11-02-v2',key='ac-analytics-consent',visitorKey='ac-visitor',sessionKey='ac-session',day=86400000,now=()=>Date.now();
+const read=k=>{try{return localStorage.getItem(k);}catch{return null;}},write=(k,v)=>{try{localStorage.setItem(k,v);}catch{}},remove=k=>{try{localStorage.removeItem(k);}catch{}},parse=k=>{try{return JSON.parse(read(k));}catch{return null;}};
+const uuid=()=>crypto.randomUUID(),query=new URLSearchParams(location.search),testMode=query.get('analytics')==='test';
+const policyDisabled=navigator.globalPrivacyControl===true||navigator.doNotTrack==='1';
+let memoryVisitor=null,memorySession=null,panel=null,resetReading=()=>{},choice=parse(key);
+if(!choice||choice.version!==version||!Number.isSafeInteger(choice.at)||choice.at<now()-90*day)choice=null;
+if(query.get('analytics')==='off'||read('ac-analytics')==='off'&&!choice){choice={version,at:now(),allowed:false};write(key,JSON.stringify(choice));}
+remove('ac-analytics');
+const enabled=()=>!policyDisabled&&choice?.allowed===true&&choice.overseas===true&&choice.at>=now()-90*day;
+function clearIdentity(){remove(visitorKey);remove(sessionKey);memoryVisitor=null;memorySession=null;}
+if(!enabled())clearIdentity();
+function updateControl(){const button=document.getElementById('analytics-toggle');if(button){button.textContent=policyDisabled?t('浏览器已禁用统计','Tracking disabled by browser'):parse('ac-erasure')?t('删除未成功，点击重试','Deletion pending — retry'):t('统计设置','Analytics settings');button.disabled=policyDisabled;button.setAttribute('aria-pressed',String(enabled()));}}
+function closePanel(){panel?.remove();panel=null;}
+async function erasePending(){const pending=parse('ac-erasure');if(!pending)return true;if(pending.expires<now()){remove('ac-erasure');return true;}try{const response=await fetch(endpoint.replace('/collect','/forget'),{method:'POST',mode:'cors',credentials:'omit',keepalive:true,headers:{'Content-Type':'application/json'},body:JSON.stringify({visitor:pending.id})});if(!response.ok)return false;remove('ac-erasure');return true;}catch{return false;}}
+async function decline(){const visitor=parse(visitorKey)||memoryVisitor;if(visitor?.id)write('ac-erasure',JSON.stringify({id:visitor.id,expires:now()+90*day}));choice={version,at:now(),allowed:false};write(key,JSON.stringify(choice));clearIdentity();resetReading();updateControl();closePanel();await erasePending();updateControl();}
+function showConsent(){
+if(policyDisabled||panel)return;
+const section=document.createElement('section');panel=section;section.className='analytics-consent';section.setAttribute('role','region');section.setAttribute('aria-label',t('访问统计设置','Analytics preferences'));
+section.innerHTML=`<strong>${t('访问统计','Site analytics')}</strong><p>${t('允许记录页面、点击、阅读进度、脱敏IP网段和设备环境，保留90天。','Allow page views, clicks, reading progress, masked IP networks and device information for 90 days.')}</p><label><input type="checkbox" ${enabled()?'checked':''}>${t('同意将统计数据发送至境外的 Sites / Cloudflare 服务。','I agree to send analytics data to the overseas Sites / Cloudflare service.')}</label><a href="https://alubanana.github.io/${lang==='en'?'en/':''}privacy/">${t('数据内容与删除方式','Data details and deletion')} ↗</a><div><button type="button" data-consent="reject">${enabled()?t('撤回同意并删除记录','Withdraw and delete records'):t('暂不允许','Decline')}</button><button type="button" data-consent="accept" ${enabled()?'':'disabled'}>${enabled()?t('保持设置','Keep settings'):t('允许统计','Allow analytics')}</button></div>`;
+const check=section.querySelector('input'),accept=section.querySelector('[data-consent="accept"]');
+check.addEventListener('change',()=>{accept.disabled=!check.checked;});section.querySelector('[data-consent="reject"]').addEventListener('click',decline);
+accept.addEventListener('click',()=>{if(!check.checked)return;const wasEnabled=enabled();choice={version,at:now(),allowed:true,overseas:true};write(key,JSON.stringify(choice));closePanel();updateControl();resetReading();if(!wasEnabled)track('pageview');});
+document.body.append(section);
+if(!document.getElementById('analytics-consent-style')){const style=document.createElement('style');style.id='analytics-consent-style';style.textContent='.analytics-consent{position:fixed;z-index:90;right:22px;bottom:22px;width:min(420px,calc(100vw - 32px));padding:22px;background:#fffef9;color:#183b33;border:1px solid #b9c7af;border-radius:14px;box-shadow:0 12px 45px #183b331c;font:13px/1.65 "Segoe UI","Microsoft YaHei",sans-serif}.analytics-consent strong{font-size:17px}.analytics-consent p{margin:9px 0 13px}.analytics-consent label{display:flex;align-items:flex-start;gap:8px;font-size:12px}.analytics-consent input{margin:4px 0 0;accent-color:#183b33;flex:none}.analytics-consent>a{display:inline-block;color:inherit;font-size:11px;margin:10px 0 14px;text-decoration:underline}.analytics-consent>div{display:flex;gap:9px}.analytics-consent button{flex:1;padding:9px 10px;border:1px solid #183b33;border-radius:6px;background:transparent;color:inherit;font:inherit;cursor:pointer}.analytics-consent button:last-child{background:#183b33;color:#fffef9}.analytics-consent button:disabled{opacity:.4;cursor:default}.analytics-consent button:focus-visible,.analytics-consent input:focus-visible{outline:2px solid #567427;outline-offset:3px}@media(max-width:500px){.analytics-consent{right:16px;bottom:16px;padding:18px;font-size:12px}}';document.head.append(style);}
+}
+document.getElementById('analytics-toggle')?.addEventListener('click',()=>{if(parse('ac-erasure'))erasePending().then(updateControl);else showConsent();});updateControl();erasePending().then(updateControl);if(!choice&&!policyDisabled)showConsent();
+const path=document.body.dataset.contentId||location.pathname;
+function identity(){const time=now();let visitor=parse(visitorKey)||memoryVisitor,fresh=false;if(!visitor?.id||!visitor.expires||visitor.expires<=time){visitor={id:uuid(),expires:time+90*day};fresh=true;write(visitorKey,JSON.stringify(visitor));memoryVisitor=visitor;}let session=parse(sessionKey)||memorySession;if(fresh||!session?.id||session.visitor!==visitor.id||time-session.last>30*60000)session={id:uuid(),visitor:visitor.id,last:time,returning:!fresh};session.last=time;memorySession=session;write(sessionKey,JSON.stringify(session));return {visitor:visitor.id,session:session.id,returning:session.returning};}
+function cleanTarget(link){try{const u=new URL(link,location.href);if(!/^https?:$/.test(u.protocol))return '';return u.origin===location.origin?u.pathname:u.hostname+u.pathname;}catch{return '';}}
+function environment(){let timezone='';try{timezone=Intl.DateTimeFormat().resolvedOptions().timeZone||'';}catch{}const size=(w,h)=>`${Math.min(9900,Math.max(100,Math.round((w||0)/100)*100))}x${Math.min(9900,Math.max(100,Math.round((h||0)/100)*100))}`;return {browserLanguage:(navigator.language||'').slice(0,32),timezone,viewport:size(innerWidth,innerHeight),screen:size(screen.width,screen.height)};}
+function track(type,extra={}){if(!enabled())return;let referrer='';try{referrer=document.referrer?new URL(document.referrer).hostname:'';}catch{}const ua=navigator.userAgent||'',device=navigator.userAgentData?.mobile||/Mobi|iPhone/i.test(ua)?'mobile':/iPad|Tablet|Android/i.test(ua)?'tablet':'desktop';const event={id:uuid(),type,path,language:lang,referrer,device,...identity(),...extra,consent:{version,at:choice.at,overseas:true},environment:environment(),...(testMode?{test:true}:{})};fetch(endpoint,{method:'POST',mode:'cors',credentials:'omit',keepalive:true,headers:{'Content-Type':'application/json'},body:JSON.stringify(event)}).catch(()=>{});}
+track('pageview');
+document.addEventListener('click',event=>{const link=event.target.closest('a[href]');if(!link||link.origin===location.origin&&link.pathname===location.pathname&&link.hash)return;const target=cleanTarget(link.href);if(target)track(link.dataset.setLang?'language_switch':link.dataset.event==='demo_open'?'demo_open':'click',{target});});
+addEventListener('storage',event=>{if(event.key===key){choice=parse(key);if(!enabled())clearIdentity();updateControl();resetReading();}});
+if(document.body.dataset.article==='true'){const sent=new Set();let visibleSince=enabled()&&document.visibilityState==='visible'?now():null,visibleElapsed=0;resetReading=()=>{sent.clear();visibleElapsed=0;visibleSince=enabled()&&document.visibilityState==='visible'?now():null;};document.addEventListener('visibilitychange',()=>{if(visibleSince!==null)visibleElapsed+=now()-visibleSince;visibleSince=enabled()&&document.visibilityState==='visible'?now():null;});let scheduled=false;function reading(){scheduled=false;if(!enabled()||document.visibilityState!=='visible'||visibleElapsed+(visibleSince===null?0:now()-visibleSince)<10000)return;const range=document.documentElement.scrollHeight-innerHeight,depth=range<=0?100:Math.min(100,Math.round(scrollY/range*100));[25,50,75,100].forEach(mark=>{if(depth>=mark-1&&!sent.has(mark)){sent.add(mark);track('read',{depth:mark});}});}addEventListener('scroll',()=>{if(!scheduled){scheduled=true;requestAnimationFrame(reading);}},{passive:true});setInterval(reading,1000);}
 })();
